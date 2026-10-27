@@ -25,6 +25,7 @@ public:
 
 class NotificationService {
 public:
+    // The notification sender must outlive this service.
     NotificationService(const INotification& notification) : m_notif(notification) {
 
     }
