@@ -1,21 +1,17 @@
-#include <iostream>
 #include <memory>
-#include <typeinfo>
+
 #include "PrinterDevices.h"
 
-
-int main()
-{
+int main() {
     std::unique_ptr<DocumentDevice> officePrinter = std::make_unique<OfficePrinter>();
     auto mfPrinter = std::make_unique<MultiFunctionPrinter>();
-    std::cout << typeid(mfPrinter).name() << std::endl;
 
-    Document doc{ "FINNALY it should be working now" };
+    Document doc{"Quarterly report"};
 
     printDocument(*officePrinter, doc);
     printDocument(*mfPrinter, doc);
 
-    mfPrinter->fax(doc, "5");
+    mfPrinter->fax(doc, "555-0100");
 
     return 0;
 }

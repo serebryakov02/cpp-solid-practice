@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <iostream>
 
 struct Payment {
@@ -18,10 +17,9 @@ public:
         processPaymentImpl(payment);
 
         return true;
-
     }
-    
-    virtual ~PaymentProcessor() {}
+
+    virtual ~PaymentProcessor() = default;
 
 protected:
     virtual void processPaymentImpl(const Payment& payment) = 0;
@@ -30,15 +28,15 @@ protected:
 class CreditCardPayment : public PaymentProcessor {
 protected:
     void processPaymentImpl(const Payment& payment) override {
-        std::cout << "Processing CreditCardPayment : "
-                    << payment.amount << '\n';
+        std::cout << "Processing credit card payment: "
+            << payment.amount << '\n';
     }
 };
 
 class PayPalPayment : public PaymentProcessor {
 protected:
     void processPaymentImpl(const Payment& payment) override {
-        std::cout << "ProcessingPayPalPayment : "
+        std::cout << "Processing PayPal payment: "
             << payment.amount << '\n';
     }
 };
@@ -46,7 +44,7 @@ protected:
 class BankTransferPayment : public PaymentProcessor {
 protected:
     void processPaymentImpl(const Payment& payment) override {
-        std::cout << "BankTransferPayment : "
+        std::cout << "Processing bank transfer: "
             << payment.amount << '\n';
     }
 };
@@ -54,7 +52,7 @@ protected:
 class CryptoPayment : public PaymentProcessor {
 protected:
     void processPaymentImpl(const Payment& payment) override {
-        std::cout << "CryptoPayment : "
+        std::cout << "Processing crypto payment: "
             << payment.amount << '\n';
     }
 };

@@ -16,7 +16,6 @@ public:
 
 class FaxDevice {
 public:
-
     virtual void fax(const Document& doc, const std::string& number) = 0;
 
     virtual ~FaxDevice() = default;
@@ -24,8 +23,8 @@ public:
 
 class ScannerDevice {
 public:
+    virtual void scan(Document& doc) = 0;
 
-    virtual  void scan(Document& doc) = 0;
     virtual ~ScannerDevice() = default;
 };
 
@@ -47,7 +46,7 @@ public:
     }
 
     void fax(const Document& doc, const std::string& number) override {
-        std::cout << "Faxing to " << number << '\n';
+        std::cout << "Faxing to " << number << ": " << doc.content << '\n';
     }
 };
 

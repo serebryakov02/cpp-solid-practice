@@ -1,7 +1,6 @@
-
 #include <iostream>
-#include "BankAccount.h"
 
+#include "BankAccount.h"
 
 void processWithdrawal(WithdrawableAccount& account, double amount) {
     account.withdraw(amount);

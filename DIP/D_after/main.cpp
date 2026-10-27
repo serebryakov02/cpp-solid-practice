@@ -1,15 +1,11 @@
-#include <iostream>
-#include <vector>
 #include "NotificationService.h"
 
-int main()
-{
+int main() {
     EmailSender email;
     SMSSender sms;
 
-
     NotificationService notifService(email);
-    notifService.notify("Hi!");
+    notifService.notify("Your report is ready.");
 
     return 0;
 }

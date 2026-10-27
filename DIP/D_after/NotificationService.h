@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 
@@ -26,8 +27,8 @@ public:
 class NotificationService {
 public:
     // The notification sender must outlive this service.
-    NotificationService(const INotification& notification) : m_notif(notification) {
-
+    NotificationService(const INotification& notification)
+        : m_notif(notification) {
     }
 
     void notify(const std::string& message) {

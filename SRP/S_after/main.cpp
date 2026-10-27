@@ -1,12 +1,8 @@
-#include <iostream>
 #include "UserManager.h"
 
-int main()
-{
-    std::cout << "Test\n";
-
-    User user1{ 1, "Mykyta", "mykyta@email.com" };
-    User user2{ 2, "Julie", "julie@email.com" };
+int main() {
+    User user1{1, "Mykyta", "mykyta@example.com"};
+    User user2{2, "Julie", "julie@example.com"};
 
     UserManager um;
     um.addUser(user1);

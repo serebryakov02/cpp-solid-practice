@@ -1,9 +1,10 @@
-#include <vector>
 #include <memory>
+#include <vector>
+
 #include "PaymentProcessing.h"
 
 int main() {
-   Payment payment {200};
+    Payment payment{200};
 
     std::vector<std::unique_ptr<PaymentProcessor>> payments;
 

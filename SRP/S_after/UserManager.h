@@ -1,4 +1,5 @@
 #pragma once
+
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -12,7 +13,6 @@ struct User {
 };
 
 class UserValidation {
-
 public:
     static bool isValid(const User& user) {
         if (user.name.empty() ||
@@ -30,8 +30,7 @@ public:
             int id = user.id;
             bool exists = std::any_of(users.begin(), users.end(), [id](const User& user) {
                 return user.id == id;
-                }
-            );
+            });
 
             if (!exists) {
                 users.push_back(user);
@@ -44,11 +43,11 @@ public:
     void removeUser(int id) {
         std::erase_if(users, [id](const User& user) {
             return user.id == id;
-            });
+        });
     }
 
     const std::vector<User>& getUsers() const {
-        return users;;
+        return users;
     }
 
 private:
