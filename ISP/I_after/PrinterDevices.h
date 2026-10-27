@@ -51,6 +51,7 @@ public:
     }
 };
 
-void printDocument(DocumentDevice& device, const Document& doc) {
+// Avoid duplicate symbols when included in multiple .cpp files.
+inline void printDocument(DocumentDevice& device, const Document& doc) {
     device.print(doc);
 }
