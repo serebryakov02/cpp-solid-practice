@@ -4,6 +4,9 @@ A collection of practical C++ exercises exploring the five SOLID principles of o
 
 The goal is to understand how these principles apply to real code through hands-on refactoring.
 
+> **NOTE: THESE EXAMPLES FOCUS ON SOLID PRINCIPLES.**
+> They use `double` for monetary values and simplify validation and file error handling to keep the focus on design.
+
 ## Principles
 
 - **S** - Single Responsibility Principle (SRP)
