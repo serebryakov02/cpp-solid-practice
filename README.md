@@ -9,11 +9,35 @@ The goal is to understand how these principles apply to real code through hands-
 
 ## Principles
 
-- **S** - Single Responsibility Principle (SRP)
-- **O** - Open/Closed Principle (OCP)
-- **L** - Liskov Substitution Principle (LSP)
-- **I** - Interface Segregation Principle (ISP)
-- **D** - Dependency Inversion Principle (DIP)
+### SRP — Single Responsibility Principle
+
+**Problem:** `UserManager` handles too many responsibilities: managing users, validating their data, generating reports, and saving information to files.
+
+**Solution:** I separated these responsibilities into dedicated classes: `UserValidation`, `UserReportPrinter`, and `UserFileStorage`. Now each class has a clear purpose, and changes to validation, reporting, or file storage do not require modifying the other components.
+
+### OCP — Open/Closed Principle
+
+**Problem:** `PaymentProcessor` uses conditional statements to handle different payment methods. Adding a new payment method requires modifying the existing implementation.
+
+**Solution:** I introduced a common payment-processing interface through an abstract base class and moved payment-specific behavior into derived classes. Now new payment methods can be introduced without modifying the existing processing logic.
+
+### LSP — Liskov Substitution Principle
+
+**Problem:** `FixedDepositAccount` inherits `withdraw()` from `BankAccount`, even though fixed deposit accounts do not support withdrawals. As a result, it cannot safely replace its base class in code that expects withdrawals to work.
+
+**Solution:** I separated withdrawal functionality into `WithdrawableAccount`. Only accounts that support withdrawals inherit from it, while `FixedDepositAccount` retains the common account functionality. This ensures that every account passed to withdrawal-related code actually supports the operation.
+
+### ISP — Interface Segregation Principle
+
+**Problem:** `BasicPrinter` is forced to implement `scan()` and `fax()`, even though it does not support these operations.
+
+**Solution:** I split the original interface into smaller, focused interfaces: `DocumentDevice`, `ScannerDevice`, and `FaxDevice`. Now each device implements only the functionality it supports, and clients depend only on the interfaces they actually need.
+
+### DIP — Dependency Inversion Principle
+
+**Problem:** `NotificationService` depends directly on `EmailSender`, making it tightly coupled to one notification method. Supporting SMS or another implementation would require changing the service.
+
+**Solution:** I introduced the `INotification` abstraction and made `NotificationService` depend on it instead of a concrete sender. The required implementation is provided through the constructor, allowing different notification methods to be used without modifying the service.
 
 ## Repository Structure
 
