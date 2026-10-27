@@ -1,8 +1,27 @@
 #pragma once
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string>
 #include <vector>
-#include "User.h"
-#include "UserValidation.h"
+
+struct User {
+    int id;
+    std::string name;
+    std::string email;
+};
+
+class UserValidation {
+
+public:
+    static bool isValid(const User& user) {
+        if (user.name.empty() ||
+            user.email.find('@') == std::string::npos) {
+            return false;
+        }
+        return true;
+    }
+};
 
 class UserManager {
 public:
@@ -34,4 +53,30 @@ public:
 
 private:
     std::vector<User> users;
+};
+
+class UserFileStorage {
+public:
+    static void saveToFile(const std::string& filename, const std::vector<User>& users) {
+        std::ofstream file(filename);
+
+        for (const auto& user : users) {
+            file << user.id << ","
+                << user.name << ","
+                << user.email << "\n";
+        }
+    }
+};
+
+class UserReportPrinter {
+public:
+    static void printReport(const std::vector<User>& users) {
+        std::cout << "=== User Report ===\n";
+
+        for (const auto& user : users) {
+            std::cout << user.id << ": "
+                << user.name << " ("
+                << user.email << ")\n";
+        }
+    }
 };

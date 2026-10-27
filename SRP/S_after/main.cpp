@@ -1,7 +1,5 @@
 #include <iostream>
 #include "UserManager.h"
-#include "UserReportPrinter.h"
-#include "UserFileStorage.h"
 
 int main()
 {
